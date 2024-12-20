@@ -13,7 +13,8 @@ def search_duplicate():
     query = request.json.get('query')
     baseencoding=create_base_encoding()
     df=pd.read_pickle("df_embedded 1.pkl")
-    df['Intermediate Description']=df['Idea Title Statement']+". "+df['Summarized Idea']
+    df['Intermediate Description']=df['ID1'].astype(str)+": "+df['Idea Title']
+    df['Intermediate Description'] = df['Intermediate Description'].apply(lambda x: (x[:100] + '...') if len(x) > 100 else x)
     x=create_input_encoding(query,baseencoding)
     results=generate_output(x,df['Intermediate Description'].tolist())
     return jsonify(results=results)
