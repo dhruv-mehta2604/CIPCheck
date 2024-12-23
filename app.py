@@ -4,6 +4,16 @@ from helper_function import create_base_encoding,generate_output,create_input_en
 
 app = Flask(__name__)
 
+# Define the API key
+API_KEY = 'rnd_3Aw69Qz9lKwvt5ffArSw0QR3uJJM'
+
+# Middleware to check API key
+@app.before_request
+def before_request():
+    api_key = request.headers.get('Authorization')
+    if not api_key or api_key != f'{API_KEY}':
+        return jsonify({"error": "Unauthorized"}), 401
+
 @app.route('/')
 def hello_world():
     return "Hello World :)"
