@@ -5,7 +5,7 @@ from helper_function import create_base_encoding,generate_output,create_input_en
 app = Flask(__name__)
 
 # Define the API key
-API_KEY = 'rnd_3Aw69Qz9lKwvt5ffArSw0QR3uJJM'
+Encrypt_API_KEY = 'cm5kXzNBdzY5UXo5bEt3dnQ1ZmZBclN3MFFSM3VKSk0='
 
 # Middleware to check API key
 @app.before_request
