@@ -11,7 +11,7 @@ Encrypt_API_KEY = 'cm5kXzNBdzY5UXo5bEt3dnQ1ZmZBclN3MFFSM3VKSk0='
 @app.before_request
 def before_request():
     api_key = request.headers.get('Authorization')
-    if not api_key or api_key != f'{API_KEY}':
+    if not api_key or api_key != f'{Encrypt_API_KEY}':
         return jsonify({"error": "Unauthorized"}), 401
 
 @app.route('/')
